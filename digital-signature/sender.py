@@ -22,14 +22,20 @@ if euler_f < 10:
 	e = libcrypt.simple_fermat_nums[0]
 elif euler_f < 100:
 	e = libcrypt.simple_fermat_nums[1]
-elif euler_f < 1000:
+elif euler_f < 100000:
 	e = libcrypt.simple_fermat_nums[2]
 else:
 	e = libcrypt.simple_fermat_nums[3]
 
+# Вычисляем закрытый ключ d
+d = abs(libcrypt.expanded_gcd(e, euler_f)[1]) 
+
 #  Шифруем сообщение message
-сrypt_message = libcrypt.expmod(message, e, n)
+signature = libcrypt.expmod(message, d, n)
 
 f = open("message.txt", "w")
-f.write(str(сrypt_message))
+f.write(str(e) + '\n' +
+		str(n) + '\n' +
+		str(message) + '\n' +
+		str(signature))
 f.close()
