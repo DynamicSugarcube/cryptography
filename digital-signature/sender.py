@@ -6,7 +6,8 @@ max_test = 100
 message = 1488
 
 # Выбираем 2 больших простых числа
-p, q = libcrypt.find_primes(max_num, max_test, 2)
+p = libcrypt.find_primes(max_num, max_test, 1)[0]
+q = libcrypt.find_primes(2 * max_num, max_test, 1)[0]
 
 # Вычисляем модуль открытого ключа
 n = p * q
@@ -37,5 +38,5 @@ f = open("message.txt", "w")
 f.write(str(e) + '\n' +
 		str(n) + '\n' +
 		str(message) + '\n' +
-		str(signature))
+		str(signature) + '\n')
 f.close()
