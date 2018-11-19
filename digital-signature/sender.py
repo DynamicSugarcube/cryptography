@@ -3,11 +3,6 @@ import argparse
 import libcrypt
 import connection as conn
 
-def cons_inp():
-	parser=argparse.ArgumentParser()
-	parser.add_argument("mess", type=int)
-	arg=parser.parse_args()
-	return(arg.mess)
 
 def main():
 	message=cons_inp()
@@ -57,5 +52,11 @@ def create_signature(message):
 
 	return str(e) + '\n' + str(n) + '\n' + str(message) + '\n' + str(signature) + '\n'
 	
+	def cons_inp():
+		parser=argparse.ArgumentParser()
+		parser.add_argument("mess", type=int)
+		arg=parser.parse_args()
+		return(arg.mess)
+
 if __name__ == "__main__":
 	main()
