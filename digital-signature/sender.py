@@ -5,8 +5,7 @@ import connection as conn
 
 
 def main():
-	message=cons_inp()
-	parcel = create_signature(message)
+	parcel = create_signature(parse_arguments())
 	
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock.connect((conn.HOST, conn.PORT))
@@ -52,11 +51,11 @@ def create_signature(message):
 
 	return str(e) + '\n' + str(n) + '\n' + str(message) + '\n' + str(signature) + '\n'
 	
-	def cons_inp():
-		parser=argparse.ArgumentParser()
-		parser.add_argument("mess", type=int)
-		arg=parser.parse_args()
-		return(arg.mess)
+def parse_arguments():
+	parser=argparse.ArgumentParser()
+	parser.add_argument("mess", type=int)
+	arg=parser.parse_args()
+	return(arg.mess)
 
 if __name__ == "__main__":
 	main()

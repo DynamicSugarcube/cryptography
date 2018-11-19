@@ -14,7 +14,7 @@ def main():
 		client_data = client_connection.recv(conn.NBYTES)
 		print("Received data:\n" + client_data.decode())
 		ack = check_signature(client_data.decode())
-		client_connection.send(bytes(ack,"UTF-8"))
+		client_connection.send(bytes(ack, "UTF-8"))
 		client_connection.close()
 		
 	sock.close()
