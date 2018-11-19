@@ -1,10 +1,17 @@
-import socket
-
+﻿import socket
+import argparse
 import libcrypt
 import connection as conn
 
+def cons_inp():
+	parser=argparse.ArgumentParser()
+	parser.add_argument("mess", type=int)
+	arg=parser.parse_args()
+	return(arg.mess)
+
 def main():
-	parcel = create_signature(503)
+	message=cons_inp()
+	parcel = create_signature(message)
 	
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock.connect((conn.HOST, conn.PORT))
